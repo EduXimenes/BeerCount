@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct BeerCountApp: App {
+    
+    @StateObject var dataManager = DataManager()
+    
+    init(){
+        FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomePage()
+                .environmentObject(dataManager)
         }
     }
 }
